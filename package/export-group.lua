@@ -72,7 +72,6 @@ function init(plugin)
               dlg.data.filename_format:gsub("{groupname}", groupname):gsub("{layername}", layername) .. '.' ..
               extension
           -- https://aseprite.org/api/command/ExportSpriteSheet#exportspritesheet
-          print(layer)
           app.command.ExportSpriteSheet {
             ui = false,
             recent = false,
