@@ -38,7 +38,7 @@ function init(plugin)
           if parent_dir then
             -- Prevent infinite loop (onchange is called when we modify the filename)
             CHANGED_TO_PARENT_DIR = true
-            dlg:modify { id = "file", filename = parent_dir }
+            dlg:modify { id = "output_dir_path", filename = parent_dir }
             CHANGED_TO_PARENT_DIR = false
           end
         end
@@ -72,10 +72,11 @@ function init(plugin)
               dlg.data.filename_format:gsub("{groupname}", groupname):gsub("{layername}", layername) .. '.' ..
               extension
           -- https://aseprite.org/api/command/ExportSpriteSheet#exportspritesheet
+          print(layer)
           app.command.ExportSpriteSheet {
             ui = false,
             recent = false,
-            listLayers = layer,
+            layer = layer.name,
             trim = dlg.data.trim,
             textureFilename = textureFilename,
             dataFilename = ""
