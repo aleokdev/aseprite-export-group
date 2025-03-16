@@ -53,8 +53,21 @@ function init(plugin)
       dlg:check {
         id = "trim",
         label = "Trim each layer",
-        selected = plugin.preferences.trim or false
+        selected = plugin.preferences.trim or false,
+        onclick = function()
+          if dlg.data.trim then
+            dlg:modify { id = "trim_by_grid", visible = true }
+          else
+            dlg:modify { id = "trim_by_grid", visible = false }
+          end
+        end
       }
+      dlg:check {
+        id = "trim_by_grid",
+        label = "By grid",
+        selected = plugin.preferences.trim_by_grid or false
+      }
+      dlg:modify { id = "trim_by_grid", visible = plugin.preferences.trim or false }
       dlg:button { id = "ok", text = "Export" }
       dlg:show { wait = true }
 
@@ -77,6 +90,7 @@ function init(plugin)
             recent = false,
             layer = layer.name,
             trim = dlg.data.trim,
+            trimByGrid = dlg.data.trim and dlg.data.trim_by_grid,
             textureFilename = textureFilename,
             dataFilename = ""
           }
@@ -86,6 +100,7 @@ function init(plugin)
         plugin.preferences.export_filename_format = dlg.data.filename_format
         plugin.preferences.export_format = dlg.data.export_format
         plugin.preferences.trim = dlg.data.trim
+        plugin.preferences.trim_by_grid = dlg.data.trim_by_grid
       end
     end,
 

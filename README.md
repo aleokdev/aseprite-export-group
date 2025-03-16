@@ -19,6 +19,7 @@ Right click any group you want to export. The options available are:
 - *Filename format*: How to format the resulting filenames. `{groupname}` is replaced by the name of the group selected, and `{layername}` is replaced by the name of each of the layers. You can use `/` here to create folders. For instance, `{groupname}/{layername}` creates a folder inside the selected target directory with the group's name and places all exported layers inside using their name as filename.
 - *Export format*: The export format and extension to use for each exported layer.
 - *Trim each layer*: Whether to remove empty space around each exported layer or not.
+    - *By grid*: Suboption of "Trim each layer". Same behavior as the sprite export dialog: Discretize the trimming to the grid's cells.
 
 **In order for this extension to work, the exported layer names must be unique within the document.**
 
